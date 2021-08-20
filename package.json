@@ -3,17 +3,12 @@
   "version": "0.1.0",
   "private": true,
 
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint"
-    }
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
-    
+    "lint": "next lint",
+    "pre-commit": "yarn lint"
   },
   "dependencies": {
     "antd": "^4.16.12",

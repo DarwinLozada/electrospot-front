@@ -11,19 +11,13 @@ const MainLayout: FC = ({ children }) => {
     <Layout>
       <Header>
         <Grid>
-        <Image src={electrospotLogo} alt="electrospot_logo" />
-        <Typography>
-          Hola este es el header
-        </Typography>
+          <Image src={electrospotLogo} alt="electrospot_logo" />
+          <Typography>Hola, este es el header</Typography>
         </Grid>
       </Header>
-      <Content>
-        {children}
-      </Content>
+      <Content>{children}</Content>
       <Footer>
-        <Button>
-          Hola buenas
-        </Button>
+        <Button>Hola buenas</Button>
         <h2>Este es footer</h2>
       </Footer>
     </Layout>
