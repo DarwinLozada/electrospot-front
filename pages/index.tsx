@@ -1,18 +1,19 @@
-import { Card, Avatar, Row, Col } from 'antd'
+import { Typography, Row, Col } from 'antd'
+import { Card, CardMeta } from '@components'
 import { ShoppingCartOutlined } from '@ant-design/icons'
 import type { NextPage } from 'next'
 import MainLayout from '../layouts/MainLayout'
 
-const { Meta } = Card
+const { Title } = Typography
 
 const Home: NextPage = () => {
   return (
     <MainLayout>
-      <Row>
-        {['w', 'w', 'w', 'w', 'w', 'w'].map((_, index) => (
-          <Col key={index} span={12}>
+      <Row align="middle" gutter={[20, 40]} className="mx-8 md:mx-16">
+        {['w', 'w', 'w', 'w', 'w', 'w', 'w', '', '', ''].map((_, index) => (
+          <Col key={index} xs={12} sm={8} md={6}>
             <Card
-              className="max-w-xs"
+              cardType="product"
               cover={
                 <img
                   src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
@@ -21,11 +22,8 @@ const Home: NextPage = () => {
               }
               actions={[<ShoppingCartOutlined key={index} />]}
             >
-              <Meta
-                avatar={
-                  <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-                }
-                title="Card title"
+              <CardMeta
+                title={<Title level={4}>U$S 32</Title>}
                 description="This is the description"
               />
             </Card>
