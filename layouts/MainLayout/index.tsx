@@ -1,9 +1,10 @@
-import { Button, Layout, Grid, Row, Col, Input } from 'antd'
-import { FC } from 'react'
+import { UserOutlined } from '@ant-design/icons'
+import { Button, Col, Grid, Input, Layout, Row } from 'antd'
 import Image from 'next/image'
-import electrospotLogo from '../../public/images/electrospot_logo_white.png'
+import Link from 'next/Link'
+import { FC } from 'react'
 import electrospotLogoMark from '../../public/images/electrospot_logo_mark.png'
-import Link from 'next/link'
+import electrospotLogo from '../../public/images/electrospot_logo_white.png'
 
 const { Header, Footer, Content } = Layout
 const { Search } = Input
@@ -16,7 +17,7 @@ const MainLayout: FC = ({ children }) => {
     <Layout className="overflow-hidden min-h-screen">
       <Header className="flex items-center justify-between w-screen">
         <Row align="middle" className="w-full">
-          <Col span={16} className="flex items-center">
+          <Col span={12} className="flex items-center">
             <Link href="/">
               <a className="flex h-[75%] max-w-[50px] xs:max-w-[150px]">
                 <Image
@@ -28,6 +29,13 @@ const MainLayout: FC = ({ children }) => {
           </Col>
           <Col span={8} className="flex items-center">
             <Search enterButton />
+          </Col>
+          <Col span={4} className="flex items-center justify-center">
+            <Button
+              icon={<UserOutlined className="text-xl text-white" />}
+              shape="circle"
+              type="primary"
+            />
           </Col>
         </Row>
       </Header>
