@@ -1,7 +1,7 @@
 import { UserOutlined } from '@ant-design/icons'
 import { Button, Col, Grid, Input, Layout, Row } from 'antd'
 import Image from 'next/image'
-import Link from 'next/Link'
+import Link from 'next/link'
 import { FC } from 'react'
 import electrospotLogoMark from '../../public/images/electrospot_logo_mark.png'
 import electrospotLogo from '../../public/images/electrospot_logo_white.png'

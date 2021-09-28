@@ -1,7 +1,7 @@
 import { Card as AntdCard, CardProps } from 'antd'
 import { CardMeta, Ribbon, Text, Title } from 'components'
 import Image from 'next/image'
-import Link from 'next/Link'
+import Link from 'next/link'
 import { FC } from 'react'
 import { CardType } from 'types/components/card'
 import { CardProductData } from 'types/products'
