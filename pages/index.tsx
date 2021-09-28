@@ -1,35 +1,42 @@
-import { Typography, Row, Col } from 'antd'
-import { Card, CardMeta } from '@components'
-import { ShoppingCartOutlined } from '@ant-design/icons'
+import { Card } from 'components'
 import type { NextPage } from 'next'
 import MainLayout from '../layouts/MainLayout'
-
-const { Title } = Typography
 
 const Home: NextPage = () => {
   return (
     <MainLayout>
-      <Row align="middle" gutter={[20, 40]} className="mx-8 md:mx-16">
-        {['w', 'w', 'w', 'w', 'w', 'w', 'w', '', '', ''].map((_, index) => (
-          <Col key={index} xs={12} sm={8} md={6}>
+      <div className="mx-4 md:mx-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+          {['w', 'w', 'w', 'w', 'w', 'w', 'w', '', '', ''].map((_, index) => (
             <Card
+              key={index}
               cardType="product"
-              cover={
-                <img
-                  src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                  alt="product"
-                />
-              }
-              actions={[<ShoppingCartOutlined key={index} />]}
-            >
-              <CardMeta
-                title={<Title level={4}>U$S 32</Title>}
-                description="This is the description"
-              />
-            </Card>
-          </Col>
-        ))}
-      </Row>
+              link="#"
+              data={{
+                price: 39.99,
+                currency: 'U$S',
+                hasDiscount: Math.random() > 0.5,
+                discount: {
+                  percentage: 9,
+                  finalPrice: 36.39,
+                },
+                title: 'Graphic Card 3090 Nvidia dwdwdwdwdwd',
+                shipping: 'Free Shipping',
+                rating: {
+                  rating: 4,
+                  reviewsAmount: 123,
+                },
+                image: {
+                  src: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
+                  width: '427',
+                  height: '613',
+                  alt: 'Bag',
+                },
+              }}
+            />
+          ))}
+        </div>
+      </div>
     </MainLayout>
   )
 }

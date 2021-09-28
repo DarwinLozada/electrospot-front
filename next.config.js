@@ -4,6 +4,6 @@
 
 module.exports = {
   images: {
-    domains: ['gw.alipayobjects.com'],
+    domains: ['fakestoreapi.com'],
   },
 }
