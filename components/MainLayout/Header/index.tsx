@@ -1,5 +1,5 @@
 import { UserOutlined } from '@ant-design/icons'
-import { Button, Col, Grid, Input, Layout, Row } from 'antd'
+import { Button, Col, Dropdown, Grid, Input, Layout, Menu, Row } from 'antd'
 import Image from 'next/image'
 import Link from 'next/link'
 import electrospotLogoMark from 'public/images/electrospot_logo_mark.png'
@@ -30,11 +30,24 @@ const Header: FC = () => {
           <Search enterButton />
         </Col>
         <Col span={4} className="flex items-center justify-center">
-          <Button
-            icon={<UserOutlined className="text-xl text-white" />}
-            shape="circle"
-            type="primary"
-          />
+          <Dropdown
+            placement="bottomCenter"
+            overlay={
+              <Menu>
+                <Menu.Item key="0">Hola</Menu.Item>
+                <Menu.Item key="1">Buenas tardes </Menu.Item>
+                <Menu.Divider />
+                <Menu.Item key="3">3rd menu item</Menu.Item>
+              </Menu>
+            }
+            trigger={['click']}
+          >
+            <Button
+              icon={<UserOutlined className="text-xl text-white" />}
+              shape="circle"
+              type="primary"
+            />
+          </Dropdown>
         </Col>
       </Row>
     </AntdHeader>
