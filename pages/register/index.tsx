@@ -35,7 +35,10 @@ const RegisterPage: NextPage = () => {
           <Form.Item
             label="Email"
             name="email"
-            rules={[{ required: true, message: 'Please input your email' }]}
+            rules={[
+              { required: true, message: 'Please input your e-mail' },
+              { type: 'email', message: 'The input is not a valid e-mail' },
+            ]}
           >
             <Input />
           </Form.Item>
@@ -45,9 +48,32 @@ const RegisterPage: NextPage = () => {
             rules={[
               {
                 required: true,
-                message: 'The password should be at least 6 characters long',
-                len: 6,
+                message: 'Please input your password',
               },
+              {
+                min: 6,
+                message: 'The password should be at least 6 characters long',
+              },
+            ]}
+          >
+            <Input.Password />
+          </Form.Item>
+          <Form.Item
+            label={<span className="mr-20">Confirm password:</span>}
+            name="confirmPassword"
+            rules={[
+              {
+                required: true,
+                message: 'Please input your password confirmation',
+              },
+              ({ getFieldValue }) => ({
+                validator(_, value) {
+                  if (!value || getFieldValue('password') === value) {
+                    return Promise.resolve()
+                  }
+                  return Promise.reject(new Error('Passwords do not match'))
+                },
+              }),
             ]}
           >
             <Input.Password />
