@@ -1,9 +1,11 @@
 import { UserCredential } from '@firebase/auth'
 import { Button, Form, Grid, Input } from 'antd'
+import { CONFIRM_ACCOUNT_ROUTE } from 'constants/routes'
 import { signUpWithEmail } from 'firebase_services/auth'
 import useAsyncAction from 'hooks/useAsyncAction'
 import AuthLayout from 'layouts/AuthLayout'
 import { NextPage } from 'next'
+import { useRouter } from 'next/router'
 import { RegisterForm } from 'types/forms'
 
 const { useBreakpoint } = Grid
@@ -11,9 +13,14 @@ const { useBreakpoint } = Grid
 const RegisterPage: NextPage = () => {
   const isMobile = useBreakpoint().xs
 
+  const router = useRouter()
+
   const { callAsync, isLoading } = useAsyncAction<UserCredential>({
     onComplete: ({ user }) => {
-      console.log(user)
+      router.push({
+        pathname: CONFIRM_ACCOUNT_ROUTE,
+        query: { email: user.email },
+      })
     },
   })
 
