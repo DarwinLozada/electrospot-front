@@ -17,6 +17,7 @@ module.exports = {
         xxl: '1600px',
       },
       colors: {
+        brandWhite: '#fff',
         brandColor100: '#e6f5f2',
         brandColor200: '#c1e8e3',
         brandColor300: '#93dbd4',

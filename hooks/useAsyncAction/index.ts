@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { UseAsyncActionOptions } from 'types/hooks/useAsyncAction'
 
 /*
   Types: 
@@ -6,7 +7,10 @@ import { useState } from 'react'
     <P>: Async function params interface
 */
 
-export default function useAsyncAction<T, P = any>() {
+export default function useAsyncAction<T, P = any>(
+  options?: UseAsyncActionOptions<T>
+) {
+  const [data, setData] = useState<null | T>(null)
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [error, setError] = useState<null | Error>(null)
 
@@ -14,9 +18,11 @@ export default function useAsyncAction<T, P = any>() {
     setIsLoading(true)
 
     asyncFunc()
-      .then((value: T) => {
+      .then((data: T) => {
+        setData(data)
         setIsLoading(false)
-        return value
+
+        if (options?.onComplete) options.onComplete(data)
       })
       .catch((error: Error) => {
         setError(error)
@@ -26,6 +32,7 @@ export default function useAsyncAction<T, P = any>() {
 
   return {
     callAsync,
+    data,
     isLoading,
     error,
   }
