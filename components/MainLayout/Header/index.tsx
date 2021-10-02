@@ -27,7 +27,7 @@ const Header: FC = () => {
           </Link>
         </Col>
         <Col span={8} className="flex items-center">
-          <Search enterButton />
+          <Search enterButton className="flex" />
         </Col>
         <Col span={4} className="flex items-center justify-center">
           <UserMenu />
