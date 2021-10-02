@@ -1,10 +1,10 @@
-import { UserOutlined } from '@ant-design/icons'
-import { Button, Col, Grid, Input, Layout, Row } from 'antd'
+import { Col, Grid, Input, Layout, Row } from 'antd'
 import Image from 'next/image'
 import Link from 'next/link'
 import electrospotLogoMark from 'public/images/electrospot_logo_mark.png'
 import electrospotLogo from 'public/images/electrospot_logo_white.png'
 import { FC } from 'react'
+import UserMenu from '../UserMenu'
 
 const { Search } = Input
 const { Header: AntdHeader } = Layout
@@ -27,14 +27,10 @@ const Header: FC = () => {
           </Link>
         </Col>
         <Col span={8} className="flex items-center">
-          <Search enterButton />
+          <Search enterButton className="flex" />
         </Col>
         <Col span={4} className="flex items-center justify-center">
-          <Button
-            icon={<UserOutlined className="text-xl text-white" />}
-            shape="circle"
-            type="primary"
-          />
+          <UserMenu />
         </Col>
       </Row>
     </AntdHeader>

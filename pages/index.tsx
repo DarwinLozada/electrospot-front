@@ -12,7 +12,6 @@ const Home: NextPage = () => {
               <Card
                 key={index}
                 cardType="product"
-                link="#"
                 data={{
                   price: 39.99,
                   currency: 'U$S',
