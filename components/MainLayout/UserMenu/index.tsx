@@ -1,11 +1,9 @@
 import { UserOutlined } from '@ant-design/icons'
 import { Avatar, Button, Dropdown, Menu, Typography } from 'antd'
 import authStore from 'stores/authStore/auth.store'
-import { takeFirstName } from 'utils/strings'
 
 const UserMenu = () => {
-  const userName = authStore((store) => store.name)
-  const firstName = takeFirstName(userName)
+  const username = authStore((state) => state.user)
 
   return (
     <Dropdown
@@ -25,7 +23,7 @@ const UserMenu = () => {
               className="flex justify-center items-center"
               icon={<UserOutlined className="!text-4xl" />}
             />
-            <Typography>{`Hi ${firstName}`}</Typography>
+            <Typography>{`Hi ${username || ''}`}</Typography>
           </Menu.Item>
           <Menu.ItemGroup>
             <Menu.Item key="1">Buenas tardes </Menu.Item>

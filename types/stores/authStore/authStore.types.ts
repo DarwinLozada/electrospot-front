@@ -1,6 +1,6 @@
+import { User } from '@firebase/auth'
+
 export interface AuthStore {
-  name: string
-  setName: (name: string) => void
-  email: string
-  setEmail: (email: string) => void
+  user: User | null
+  setUser: (user: User | null) => void
 }

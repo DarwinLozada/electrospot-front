@@ -1,33 +1,37 @@
 import { UserCredential } from '@firebase/auth'
 import { Form, Input } from 'antd'
-import { CONFIRM_ACCOUNT_ROUTE } from 'constants/routes'
-import { signUpWithEmail } from 'firebase_services/auth'
+import { PRODUCT_FEED_ROUTE } from 'constants/routes'
+import { signInWithEmail } from 'firebase_services/auth'
 import useAsyncAction from 'hooks/useAsyncAction'
 import AuthLayout from 'layouts/AuthLayout'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
-import { RegisterForm } from 'types/forms'
+import authStore from 'stores/authStore/auth.store'
+import { LoginForm } from 'types/forms'
 
-const RegisterPage: NextPage = () => {
+const LoginPage: NextPage = () => {
   const router = useRouter()
+
+  const setUser = authStore((store) => store.setUser)
 
   const { callAsync, isLoading } = useAsyncAction<UserCredential>({
     onComplete: ({ user }) => {
+      setUser(user)
       router.push({
-        pathname: CONFIRM_ACCOUNT_ROUTE,
+        pathname: PRODUCT_FEED_ROUTE,
         query: { email: user.email },
       })
     },
   })
 
-  const onSubmit = ({ email, password }: RegisterForm) => {
-    callAsync(() => signUpWithEmail(email, password))
+  const onSubmit = ({ email, password }: LoginForm) => {
+    callAsync(() => signInWithEmail(email, password))
   }
 
   return (
     <AuthLayout
-      title="Create Account"
-      formName="register-form"
+      title="Login"
+      formName="login-form"
       onSubmit={onSubmit}
       isLoading={isLoading}
     >
@@ -57,28 +61,8 @@ const RegisterPage: NextPage = () => {
       >
         <Input.Password />
       </Form.Item>
-      <Form.Item
-        label={<span className="">Confirm password:</span>}
-        name="confirmPassword"
-        rules={[
-          {
-            required: true,
-            message: 'Please input your password confirmation',
-          },
-          ({ getFieldValue }) => ({
-            validator(_, value) {
-              if (!value || getFieldValue('password') === value) {
-                return Promise.resolve()
-              }
-              return Promise.reject(new Error('Passwords do not match'))
-            },
-          }),
-        ]}
-      >
-        <Input.Password />
-      </Form.Item>
     </AuthLayout>
   )
 }
 
-export default RegisterPage
+export default LoginPage

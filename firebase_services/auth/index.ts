@@ -1,7 +1,9 @@
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  onAuthStateChanged as firebaseAuthStateChanged,
   signInWithEmailAndPassword,
+  User,
   UserCredential,
 } from 'firebase/auth'
 import app from 'firebase_services/app'
@@ -23,3 +25,26 @@ export const signInWithEmail = (
   signInWithEmailAndPassword(auth, email, password).then(
     (userCredential) => userCredential
   )
+
+export const getCurrentUser = (): User | null => {
+  let user = null
+  firebaseAuthStateChanged(auth, (userData) => {
+    if (userData) {
+      user = userData
+    }
+  })
+
+  return user
+}
+
+export const onAuthStateChanged = (
+  onChange: (user: User | null, ...args: any) => any
+) => {
+  try {
+    firebaseAuthStateChanged(auth, (user) => {
+      onChange(user)
+    })
+  } catch (err) {
+    throw new Error(err as string)
+  }
+}
