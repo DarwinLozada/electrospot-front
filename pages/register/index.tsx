@@ -1,15 +1,19 @@
 import { UserCredential } from '@firebase/auth'
-import { Form, Input } from 'antd'
+import { Form, Input, message } from 'antd'
 import { CONFIRM_ACCOUNT_ROUTE } from 'constants/routes'
 import { signUpWithEmail } from 'firebase_services/auth'
 import useAsyncAction from 'hooks/useAsyncAction'
 import AuthLayout from 'layouts/AuthLayout'
 import { NextPage } from 'next'
+import useTranslation from 'next-translate/useTranslation'
 import { useRouter } from 'next/router'
 import { RegisterForm } from 'types/forms'
+import { filterToTranslate } from 'utils/strings'
 
 const RegisterPage: NextPage = () => {
   const router = useRouter()
+
+  const { t } = useTranslation('feedback')
 
   const { callAsync, isLoading } = useAsyncAction<UserCredential>({
     onComplete: ({ user }) => {
@@ -17,6 +21,10 @@ const RegisterPage: NextPage = () => {
         pathname: CONFIRM_ACCOUNT_ROUTE,
         query: { email: user.email },
       })
+    },
+
+    onError: (err) => {
+      message.error(t(`errors.firebase_errors.${filterToTranslate(err.message)}`))
     },
   })
 
