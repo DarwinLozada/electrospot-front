@@ -5,7 +5,6 @@ import create from 'zustand'
 const authStore = create<AuthStore>((set) => ({
   user: getCurrentUser(),
   setUser: (user) => {
-    console.log(user)
     set({ user })
   },
 }))

@@ -3,6 +3,7 @@ import {
   getAuth,
   onAuthStateChanged as firebaseAuthStateChanged,
   signInWithEmailAndPassword,
+  updateProfile,
   User,
   UserCredential,
 } from 'firebase/auth'
@@ -12,11 +13,16 @@ export const auth = getAuth(app)
 
 export const signUpWithEmail: (
   email: string,
-  password: string
-) => Promise<UserCredential> = (email, password) =>
-  createUserWithEmailAndPassword(auth, email, password).then(
-    (userCredential) => userCredential
-  )
+  password: string,
+  credentialName: string
+) => Promise<UserCredential> = (email, password, credentialName) =>
+  createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
+    updateProfile(userCredential.user, {
+      displayName: credentialName,
+    })
+
+    return userCredential
+  })
 
 export const signInWithEmail = (
   email: string,

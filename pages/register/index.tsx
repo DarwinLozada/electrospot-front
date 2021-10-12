@@ -20,8 +20,8 @@ const RegisterPage: NextPage = () => {
     },
   })
 
-  const onSubmit = ({ email, password }: RegisterForm) => {
-    callAsync(() => signUpWithEmail(email, password))
+  const onSubmit = ({ email, password, name }: RegisterForm) => {
+    callAsync(() => signUpWithEmail(email, password, name))
   }
 
   return (
@@ -32,6 +32,13 @@ const RegisterPage: NextPage = () => {
       isLoading={isLoading}
     >
       <Form.Item
+        label="Your name"
+        name="name"
+        rules={[{ required: true, message: 'Please input your name' }]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
         label="Email"
         name="email"
         rules={[
@@ -41,6 +48,7 @@ const RegisterPage: NextPage = () => {
       >
         <Input />
       </Form.Item>
+
       <Form.Item
         label="Password"
         name="password"
