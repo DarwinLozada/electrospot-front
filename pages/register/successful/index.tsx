@@ -7,6 +7,10 @@ import { useRouter } from 'next/router'
 const SuccessFullRegistration: NextPage = () => {
   const router = useRouter()
 
+  const handleClick = () => {
+    router.push(LOGIN_ROUTE)
+  }
+
   return (
     <AuthLayout title="Confirm your account">
       <Typography.Paragraph className="text-center">
@@ -16,13 +20,7 @@ const SuccessFullRegistration: NextPage = () => {
         </Typography.Text>
         , please check it out so you can confirm your account
       </Typography.Paragraph>
-      <Button
-        onClick={() => {
-          router.push(LOGIN_ROUTE)
-        }}
-      >
-        Go to login
-      </Button>
+      <Button onClick={handleClick}>Go to login</Button>
     </AuthLayout>
   )
 }
