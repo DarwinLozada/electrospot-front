@@ -15,7 +15,7 @@ const Header: FC = () => {
 
   return (
     <AntdHeader className="flex items-center justify-between w-screen">
-      <Row align="middle" className="w-full">
+      <Row align="middle" justify="center" className="w-full">
         <Col span={12} className="flex items-center">
           <Link href="/">
             <a className="flex h-[75%] max-w-[50px] xs:max-w-[150px]">
@@ -27,10 +27,14 @@ const Header: FC = () => {
           </Link>
         </Col>
         <Col span={8} className="flex items-center">
-          <Search enterButton className="flex" />
+          <div className="flex">
+            <Search enterButton className="flex" />
+          </div>
         </Col>
         <Col span={4} className="flex items-center justify-center">
-          <UserMenu />
+          <div className="flex justify-center">
+            <UserMenu />
+          </div>
         </Col>
       </Row>
     </AntdHeader>
