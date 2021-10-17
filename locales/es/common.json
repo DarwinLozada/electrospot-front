@@ -58,6 +58,9 @@
   "errors": {
     "firebase_errors": {
       "FirebaseError(auth/email-already-in-use)": "Este email ya se encuentra en uso"
+    },
+    "auth": {
+      "notVerifiedEmail": "El email de esta cuenta no está verificado, por favor revisa la bandeja de entrada"
     }
   }
 }

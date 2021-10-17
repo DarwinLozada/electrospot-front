@@ -59,6 +59,10 @@
   "errors": {
     "firebase_errors": {
       "FirebaseError(auth/email-already-in-use)": "This email is alredy in use"
+    },
+
+    "auth": {
+      "notVerifiedEmail": "The email of this account is not verified, please check the inbox"
     }
   }
 }
