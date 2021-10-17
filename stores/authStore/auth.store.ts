@@ -1,23 +1,12 @@
+import { getCurrentUser } from 'firebase_services/auth'
 import { AuthStore } from 'types/stores/authStore/authStore.types'
 import create from 'zustand'
-import { persist } from 'zustand/middleware'
 
-const authStore = create<AuthStore>(
-  persist(
-    (set, get) => ({
-      name: '',
-      setName: (name) => {
-        set({ name })
-      },
-      email: '',
-      setEmail: (email) => {
-        set({ email })
-      },
-    }),
-    {
-      name: 'authStorage',
-    }
-  )
-)
+const authStore = create<AuthStore>((set) => ({
+  user: getCurrentUser(),
+  setUser: (user) => {
+    set({ user })
+  },
+}))
 
 export default authStore

@@ -1,0 +1,64 @@
+{
+  "auth": {
+    "register": {
+      "title": "Create Account",
+      "fields": {
+        "name": {
+          "label": "Your name",
+          "errors": {
+            "required": "Please input your name"
+          }
+        },
+        "email": {
+          "label": "Email",
+          "errors": {
+            "required": "Please input your e-mail",
+            "type": "The input is not a valid e-mail"
+          }
+        },
+        "password": {
+          "label": "Password",
+          "errors": {
+            "required": "Please input your password",
+            "min": "The password should be at least 6 characters long"
+          }
+        },
+        "confirmPassword": {
+          "label": "Confirm Password",
+          "errors": {
+            "required": "Please input your password confirmation",
+            "validator": "Passwords do not match"
+          }
+        }
+      },
+
+      "submit": "Submit"
+    },
+    "login": {
+      "title": "Login",
+      "fields": {
+        "email": {
+          "label": "Email",
+          "errors": {
+            "required": "Please input your e-mail",
+            "type": "The input is not a valid e-mail"
+          }
+        },
+        "password": {
+          "label": "Password",
+          "errors": {
+            "required": "Please input your password"
+          }
+        }
+      },
+
+      "submit": "Submit"
+    }
+  },
+
+  "errors": {
+    "firebase_errors": {
+      "FirebaseError(auth/email-already-in-use)": "This email is alredy in use"
+    }
+  }
+}
