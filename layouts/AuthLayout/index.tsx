@@ -7,7 +7,7 @@ const { useBreakpoint } = Grid
 
 interface Props {
   title: ReactNode
-  submitText: ReactNode
+  submitText?: ReactNode
   formName?: string
   onSubmit?: (...args: any) => any
   isLoading?: boolean
