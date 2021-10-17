@@ -13,7 +13,7 @@ import { filterToTranslate } from 'utils/strings'
 const RegisterPage: NextPage = () => {
   const router = useRouter()
 
-  const { t } = useTranslation('feedback')
+  const { t } = useTranslation('common')
 
   const { callAsync, isLoading } = useAsyncAction<UserCredential>({
     onComplete: ({ user }) => {
@@ -34,20 +34,21 @@ const RegisterPage: NextPage = () => {
 
   return (
     <AuthLayout
-      title="Create Account"
+      title={t('auth.register.title')}
       formName="register-form"
       onSubmit={onSubmit}
+      submitText={t('auth.register.submit')}
       isLoading={isLoading}
     >
       <Form.Item
-        label="Your name"
+        label={t('auth.register.fields.name.label')}
         name="name"
         rules={[{ required: true, message: 'Please input your name' }]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label="Email"
+        label={t('auth.register.fields.email.label')}
         name="email"
         rules={[
           { required: true, message: 'Please input your e-mail' },
@@ -58,7 +59,7 @@ const RegisterPage: NextPage = () => {
       </Form.Item>
 
       <Form.Item
-        label="Password"
+        label={t('auth.register.fields.password.label')}
         name="password"
         rules={[
           {
@@ -74,7 +75,9 @@ const RegisterPage: NextPage = () => {
         <Input.Password />
       </Form.Item>
       <Form.Item
-        label={<span className="">Confirm password:</span>}
+        label={
+          <span className="">{t('auth.register.fields.confirmPassword.label')}</span>
+        }
         name="confirmPassword"
         rules={[
           {

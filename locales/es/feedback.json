@@ -1,7 +1,0 @@
-{
-  "errors": {
-    "firebase_errors": {
-      "FirebaseError(auth/email-already-in-use)": "Este email ya se encuentra en uso"
-    }
-  }
-}

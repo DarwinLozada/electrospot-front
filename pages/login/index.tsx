@@ -5,12 +5,15 @@ import { signInWithEmail } from 'firebase_services/auth'
 import useAsyncAction from 'hooks/useAsyncAction'
 import AuthLayout from 'layouts/AuthLayout'
 import { NextPage } from 'next'
+import useTranslation from 'next-translate/useTranslation'
 import { useRouter } from 'next/router'
 import authStore from 'stores/authStore/auth.store'
 import { LoginForm } from 'types/forms'
 
 const LoginPage: NextPage = () => {
   const router = useRouter()
+
+  const { t } = useTranslation('common')
 
   const setUser = authStore((store) => store.setUser)
 
@@ -30,32 +33,29 @@ const LoginPage: NextPage = () => {
 
   return (
     <AuthLayout
-      title="Login"
+      title={t('auth.login.title')}
       formName="login-form"
       onSubmit={onSubmit}
       isLoading={isLoading}
+      submitText={t('auth.login.submit')}
     >
       <Form.Item
-        label="Email"
+        label={t('auth.login.fields.email.label')}
         name="email"
         rules={[
-          { required: true, message: 'Please input your e-mail' },
-          { type: 'email', message: 'The input is not a valid e-mail' },
+          { required: true, message: t('auth.login.fields.email.errors.required') },
+          { type: 'email', message: t('auth.login.fields.email.errors.type') },
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label="Password"
+        label={t('auth.login.fields.password.label')}
         name="password"
         rules={[
           {
             required: true,
-            message: 'Please input your password',
-          },
-          {
-            min: 6,
-            message: 'The password should be at least 6 characters long',
+            message: t('auth.login.fields.password.errors.required'),
           },
         ]}
       >

@@ -2,12 +2,14 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged as firebaseAuthStateChanged,
+  sendSignInLinkToEmail,
   signInWithEmailAndPassword,
   updateProfile,
   User,
   UserCredential,
 } from 'firebase/auth'
 import app from 'firebase_services/app'
+import actionCodeSettings from 'firebase_services/constants/actionCodeSettings'
 
 export const auth = getAuth(app)
 
@@ -19,6 +21,8 @@ export const signUpWithEmail: (
   createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
     updateProfile(userCredential.user, {
       displayName: credentialName,
+    }).then(() => {
+      sendSignInLinkToEmail(auth, email, actionCodeSettings)
     })
 
     return userCredential

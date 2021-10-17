@@ -1,1 +1,63 @@
-{}
+{
+  "auth": {
+    "register": {
+      "title": "Crear Cuenta",
+      "fields": {
+        "name": {
+          "label": "Tu nombre",
+          "errors": {
+            "required": "Por favor ingresa tu nombre"
+          }
+        },
+        "email": {
+          "label": "Correo electrónico",
+          "errors": {
+            "required": "Por favor ingresa tu correo",
+            "type": "El correo ingresado no es válido"
+          }
+        },
+        "password": {
+          "label": "Contraseña",
+          "errors": {
+            "required": "Por favor ingresa tu contraseña",
+            "min": "La contraseña debe tener al menos 6b carácteres"
+          }
+        },
+        "confirmPassword": {
+          "label": "Confirmar contraseña",
+          "errors": {
+            "required": "Por favor ingresa la confirmación de tu contraseña",
+            "validator": "Las contraseñas no coinciden"
+          }
+        }
+      },
+
+      "submit": "Aceptar"
+    },
+    "login": {
+      "title": "Iniciar sesión",
+      "fields": {
+        "email": {
+          "label": "Email",
+          "errors": {
+            "required": "Por favor ingresa tu correo",
+            "type": "El correo ingresado no es válido"
+          }
+        },
+        "password": {
+          "label": "Contraseña",
+          "errors": {
+            "required": "Por favor ingresa tu contraseña"
+          }
+        }
+      },
+
+      "submit": "Aceptar"
+    }
+  },
+  "errors": {
+    "firebase_errors": {
+      "FirebaseError(auth/email-already-in-use)": "Este email ya se encuentra en uso"
+    }
+  }
+}

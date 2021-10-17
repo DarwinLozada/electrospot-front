@@ -7,6 +7,7 @@ const { useBreakpoint } = Grid
 
 interface Props {
   title: ReactNode
+  submitText: ReactNode
   formName?: string
   onSubmit?: (...args: any) => any
   isLoading?: boolean
@@ -18,6 +19,7 @@ const AuthLayout: FC<Props> = ({
   formName,
   onSubmit,
   isLoading,
+  submitText = 'Submit',
 }) => {
   const isMobile = useBreakpoint().xs
 
@@ -49,7 +51,7 @@ const AuthLayout: FC<Props> = ({
                 loading={isLoading}
                 block={!!isMobile}
               >
-                Submit
+                {submitText}
               </Button>
             </Form.Item>
           </Form>
