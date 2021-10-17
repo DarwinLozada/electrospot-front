@@ -2,7 +2,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged as firebaseAuthStateChanged,
-  sendSignInLinkToEmail,
+  sendEmailVerification,
   signInWithEmailAndPassword,
   updateProfile,
   User,
@@ -22,7 +22,7 @@ export const signUpWithEmail: (
     updateProfile(userCredential.user, {
       displayName: credentialName,
     }).then(() => {
-      sendSignInLinkToEmail(auth, email, actionCodeSettings)
+      sendEmailVerification(userCredential.user, actionCodeSettings)
     })
 
     return userCredential

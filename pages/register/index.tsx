@@ -24,6 +24,7 @@ const RegisterPage: NextPage = () => {
     },
 
     onError: (err) => {
+      console.log(err)
       message.error(t(`errors.firebase_errors.${filterToTranslate(err.message)}`))
     },
   })

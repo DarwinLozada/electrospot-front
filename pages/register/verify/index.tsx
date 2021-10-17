@@ -4,7 +4,7 @@ import AuthLayout from 'layouts/AuthLayout'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 
-const SuccessFullRegistration: NextPage = () => {
+const VerifyEmailPage: NextPage = () => {
   const router = useRouter()
 
   const handleClick = () => {
@@ -25,4 +25,4 @@ const SuccessFullRegistration: NextPage = () => {
   )
 }
 
-export default SuccessFullRegistration
+export default VerifyEmailPage
