@@ -11,6 +11,15 @@ export interface UseAsyncActionOptions<T> {
   onError?: (error: Error) => any
 }
 
+/**
+ * Hook that allows doing async calls in any moment and provides
+ * several ways to consume the state of the process.
+ *
+ * @param options The hook options.
+ * @returns - The `callAsync` function to do asynchronous processes.
+ * - The `data` returned by the callback.
+ *  - The `isLoading` and `error` state describers.
+ */
 export default function useAsyncAction<T, P = any>(
   options?: UseAsyncActionOptions<T>
 ) {
