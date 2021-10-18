@@ -3,6 +3,7 @@ import {
   getAuth,
   onAuthStateChanged as firebaseAuthStateChanged,
   sendEmailVerification,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
@@ -70,6 +71,15 @@ export const signInWithEmail = (
 
     return userCredential
   })
+
+/**
+ * Send an email to change the user's password
+ *
+ * @param userEmail - User's email
+ * @returns Promise<void>
+ */
+export const sendChangePasswordEmail = (userEmail: string) =>
+  sendPasswordResetEmail(auth, userEmail, actionCodeSettings)
 
 /**
  * Get the data of the current user if it's logged in.

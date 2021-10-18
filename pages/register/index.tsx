@@ -8,7 +8,7 @@ import { NextPage } from 'next'
 import useTranslation from 'next-translate/useTranslation'
 import { useRouter } from 'next/router'
 import { RegisterForm } from 'types/forms'
-import { filterToTranslate } from 'utils/strings'
+import { createErrorMessage } from 'utils/errors'
 
 const RegisterPage: NextPage = () => {
   const router = useRouter()
@@ -24,7 +24,7 @@ const RegisterPage: NextPage = () => {
     },
 
     onError: (err) => {
-      message.error(t(`errors.firebase_errors.${filterToTranslate(err.message)}`))
+      message.error(createErrorMessage(t, err))
     },
   })
 

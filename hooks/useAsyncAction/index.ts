@@ -12,9 +12,10 @@ export interface UseAsyncActionOptions<T> {
 }
 
 export default function useAsyncAction<T, P = any>(
-  options: UseAsyncActionOptions<T>
+  options?: UseAsyncActionOptions<T>
 ) {
-  const { onComplete, onError } = options
+  const onComplete = options?.onComplete
+  const onError = options?.onError
 
   const [data, setData] = useState<null | T>(null)
   const [isLoading, setIsLoading] = useState<boolean>(false)

@@ -1,7 +1,7 @@
 {
   "auth": {
     "register": {
-      "title": "Crear Cuenta",
+      "title": "Crear cuenta",
       "fields": {
         "name": {
           "label": "Tu nombre",
@@ -12,7 +12,7 @@
         "email": {
           "label": "Correo electrónico",
           "errors": {
-            "required": "Por favor ingresa tu correo",
+            "required": "Por favor ingresa tu correo electrónico",
             "type": "El correo ingresado no es válido"
           }
         },
@@ -40,7 +40,7 @@
         "email": {
           "label": "Email",
           "errors": {
-            "required": "Por favor ingresa tu correo",
+            "required": "Por favor ingresa tu correo electrónico",
             "type": "El correo ingresado no es válido"
           }
         },
@@ -53,11 +53,29 @@
       },
 
       "submit": "Aceptar"
+    },
+    "sendChangePasswordEmail": {
+      "title": "Cambiar contraseña",
+      "fields": {
+        "email": {
+          "label": "Tu email",
+          "errors": {
+            "required": "Por favor ingresa tu correo electrónico",
+            "type": "El correo ingresado no es válido"
+          }
+        }
+      },
+      "extra": {
+        "emailInfo": "Ingresa tu correo electrónico para recibir un mail para cambiar tu contraseña"
+      },
+      "submit": "Aceptar"
     }
   },
   "errors": {
-    "firebase_errors": {
-      "FirebaseError(auth/email-already-in-use)": "Este email ya se encuentra en uso"
+    "firebaseErrors": {
+      "FirebaseError(auth/email-already-in-use)": "Este email ya se encuentra en uso",
+      "FirebaseError(auth/user-not-found)": "No pudimos enviar el correo. Por favor intenta de nuevo",
+      "default": "Ha ocurrido un error"
     },
     "auth": {
       "notVerifiedEmail": "El email de esta cuenta no está verificado, por favor revisa la bandeja de entrada"

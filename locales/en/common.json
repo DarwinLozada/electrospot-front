@@ -1,7 +1,7 @@
 {
   "auth": {
     "register": {
-      "title": "Create Account",
+      "title": "Create account",
       "fields": {
         "name": {
           "label": "Your name",
@@ -53,12 +53,51 @@
       },
 
       "submit": "Submit"
+    },
+
+    "changePassword": {
+      "title": "Change password",
+      "fields": {
+        "password": {
+          "label": "New password",
+          "errors": {
+            "required": "Please input the new password",
+            "min": "The password should be at least 6 characters long"
+          }
+        },
+        "confirmPassword": {
+          "label": "Confirm new password",
+          "errors": {
+            "required": "Please input the new password confirmation",
+            "validator": "Passwords do not match"
+          }
+        }
+      },
+      "submit": "Submit"
+    },
+    "sendChangePasswordEmail": {
+      "title": "Change password",
+      "fields": {
+        "email": {
+          "label": "Your email",
+          "errors": {
+            "required": "Please input the email",
+            "type": "The input is not a valid e-mail"
+          }
+        }
+      },
+      "extra": {
+        "emailInfo": "Input your email to receive a mail to change your password"
+      },
+      "submit": "Submit"
     }
   },
 
   "errors": {
-    "firebase_errors": {
-      "FirebaseError(auth/email-already-in-use)": "This email is alredy in use"
+    "firebaseErrors": {
+      "FirebaseError(auth/email-already-in-use)": "This email is alredy in use",
+      "FirebaseError(auth/user-not-found)": "We could not send the email. Please try again",
+      "default": "An error has ocurred"
     },
 
     "auth": {

@@ -1,4 +1,4 @@
-import { Button, Form, Grid, Typography } from 'antd'
+import { Button, Form, FormProps, Grid, Typography } from 'antd'
 import Image from 'next/image'
 import electrospotLogo from 'public/images/electrospot_logo_black.png'
 import { FC, ReactNode } from 'react'
@@ -8,6 +8,7 @@ const { useBreakpoint } = Grid
 interface Props {
   title: ReactNode
   submitText?: ReactNode
+  formLayout?: FormProps
   formName?: string
   onSubmit?: (...args: any) => any
   isLoading?: boolean
@@ -17,6 +18,7 @@ const AuthLayout: FC<Props> = ({
   children,
   title,
   formName,
+  formLayout,
   onSubmit,
   isLoading,
   submitText = 'Submit',
@@ -40,8 +42,8 @@ const AuthLayout: FC<Props> = ({
             labelCol={{ span: 8 }}
             wrapperCol={{ span: 16 }}
             name={formName}
-            className="p-4"
             onFinish={onSubmit}
+            {...formLayout}
           >
             {children}
             <Form.Item wrapperCol={{ offset: isMobile ? 0 : 8, span: 16 }}>
