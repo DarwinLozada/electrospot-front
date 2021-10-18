@@ -1,7 +1,8 @@
 import { UserCredential } from '@firebase/auth'
-import { Form, Input } from 'antd'
+import { Form, Input, message } from 'antd'
 import { PRODUCT_FEED_ROUTE } from 'constants/routes'
 import { signInWithEmail } from 'firebase_services/auth'
+import { notVerifiedEmail } from 'firebase_services/constants/errorMessages'
 import useAsyncAction from 'hooks/useAsyncAction'
 import AuthLayout from 'layouts/AuthLayout'
 import { NextPage } from 'next'
@@ -24,6 +25,14 @@ const LoginPage: NextPage = () => {
         pathname: PRODUCT_FEED_ROUTE,
         query: { email: user.email },
       })
+    },
+
+    onError: (error) => {
+      message.error(
+        error.message === notVerifiedEmail
+          ? t('errors.auth.notVerifiedEmail')
+          : error.message
+      )
     },
   })
 

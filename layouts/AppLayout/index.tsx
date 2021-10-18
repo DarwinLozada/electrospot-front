@@ -8,6 +8,7 @@ const AppLayout: FC = ({ children }) => {
   const setUser = authStore((store) => store.setUser)
 
   onAuthStateChanged((user) => {
+    if (user && !user.emailVerified) return
     setUser(user)
   })
 

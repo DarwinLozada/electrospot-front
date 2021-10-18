@@ -8,7 +8,7 @@ import { NextPage } from 'next'
 import useTranslation from 'next-translate/useTranslation'
 import { useRouter } from 'next/router'
 import { RegisterForm } from 'types/forms'
-import { filterToTranslate } from 'utils/strings'
+import { createErrorMessage } from 'utils/errors'
 
 const RegisterPage: NextPage = () => {
   const router = useRouter()
@@ -24,7 +24,7 @@ const RegisterPage: NextPage = () => {
     },
 
     onError: (err) => {
-      message.error(t(`errors.firebase_errors.${filterToTranslate(err.message)}`))
+      message.error(createErrorMessage(t, err))
     },
   })
 
@@ -64,11 +64,11 @@ const RegisterPage: NextPage = () => {
         rules={[
           {
             required: true,
-            message: 'Please input your password',
+            message: t('auth.register.fields.confirmPassword.errors.required'),
           },
           {
             min: 6,
-            message: 'The password should be at least 6 characters long',
+            message: t('auth.register.fields.confirmPassword.errors.min'),
           },
         ]}
       >
@@ -82,14 +82,16 @@ const RegisterPage: NextPage = () => {
         rules={[
           {
             required: true,
-            message: 'Please input your password confirmation',
+            message: t('auth.register.fields.confirmPassword.errors.required'),
           },
           ({ getFieldValue }) => ({
             validator(_, value) {
               if (!value || getFieldValue('password') === value) {
                 return Promise.resolve()
               }
-              return Promise.reject(new Error('Passwords do not match'))
+              return Promise.reject(
+                new Error(t('auth.register.fields.confirmPassword.errors.validator'))
+              )
             },
           }),
         ]}
