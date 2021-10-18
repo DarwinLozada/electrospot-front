@@ -54,6 +54,27 @@
 
       "submit": "Aceptar"
     },
+
+    "confirmChangePassword": {
+      "title": "Cambiar contraseña",
+      "fields": {
+        "password": {
+          "label": "Nueva contraseña",
+          "errors": {
+            "required": "Por favor ingresa tu nueva contraseña",
+            "min": "La contraseña debe tener al menos 6 carácteres"
+          }
+        },
+        "confirmPassword": {
+          "label": "Confirmar contraseña",
+          "errors": {
+            "required": "Por favor ingresa la confirmación de la nueva contraseña",
+            "validator": "Las contraseñas no coinciden"
+          }
+        }
+      },
+      "submit": "Aceptar"
+    },
     "sendChangePasswordEmail": {
       "title": "Cambiar contraseña",
       "fields": {

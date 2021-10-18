@@ -55,18 +55,18 @@
       "submit": "Submit"
     },
 
-    "changePassword": {
+    "confirmChangePassword": {
       "title": "Change password",
       "fields": {
         "password": {
           "label": "New password",
           "errors": {
-            "required": "Please input the new password",
+            "required": "Please input your new password",
             "min": "The password should be at least 6 characters long"
           }
         },
         "confirmPassword": {
-          "label": "Confirm new password",
+          "label": "Confirm password",
           "errors": {
             "required": "Please input the new password confirmation",
             "validator": "Passwords do not match"
@@ -75,6 +75,7 @@
       },
       "submit": "Submit"
     },
+
     "sendChangePasswordEmail": {
       "title": "Change password",
       "fields": {

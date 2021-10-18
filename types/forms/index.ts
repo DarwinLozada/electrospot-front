@@ -12,3 +12,7 @@ export interface LoginForm {
 export interface SendChangePasswordEmailForm {
   email: string
 }
+
+export interface ConfirmChangePasswordForm {
+  password: string
+}
