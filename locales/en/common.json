@@ -73,6 +73,9 @@
           }
         }
       },
+      "messages": {
+        "successful": "Password updated successfully"
+      },
       "submit": "Submit"
     },
 

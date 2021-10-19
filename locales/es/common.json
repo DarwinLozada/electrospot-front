@@ -73,6 +73,9 @@
           }
         }
       },
+      "messages": {
+        "successful": "Se ha cambiado la contraseña con éxito"
+      },
       "submit": "Aceptar"
     },
     "sendChangePasswordEmail": {

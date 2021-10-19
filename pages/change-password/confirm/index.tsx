@@ -16,7 +16,7 @@ const ConfirmChangePasswordPage: NextPage = () => {
 
   const { callAsync, isLoading } = useAsyncAction<void>({
     onComplete: () => {
-      console.log('got em')
+      message.success(t('auth.confirmChangePassword.messages.successful'))
     },
     onError: (err) => {
       message.error(t('auth.errors.default'))
