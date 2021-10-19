@@ -1,13 +1,14 @@
 import { UserCredential } from '@firebase/auth'
 import { Form, Input, message } from 'antd'
 import { PRODUCT_FEED_ROUTE } from 'constants/routes'
-import { signInWithEmail } from 'firebase_services/auth'
+import { applyFirebaseActionCode, signInWithEmail } from 'firebase_services/auth'
 import { notVerifiedEmail } from 'firebase_services/constants/errorMessages'
 import useAsyncAction from 'hooks/useAsyncAction'
 import AuthLayout from 'layouts/AuthLayout'
 import { NextPage } from 'next'
 import useTranslation from 'next-translate/useTranslation'
 import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 import authStore from 'stores/authStore/auth.store'
 import { LoginForm } from 'types/forms'
 
@@ -35,6 +36,12 @@ const LoginPage: NextPage = () => {
       )
     },
   })
+
+  useEffect(() => {
+    if (router.query.mode) {
+      applyFirebaseActionCode(router.query.mode as string)
+    }
+  }, [router])
 
   const onSubmit = ({ email, password }: LoginForm) => {
     callAsync(() => signInWithEmail(email, password))

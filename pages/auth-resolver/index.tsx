@@ -9,8 +9,6 @@ const AuthResolverPage: NextPage = () => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { query } = context
 
-  console.log(query)
-
   const queryURLParams = new URLSearchParams(
     query as Record<string, string>
   ).toString()
@@ -19,10 +17,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     return {
       redirect: {
         permanent: false,
-        destination:
-          emailActionsModesRoutes[
-            query.mode as keyof typeof emailActionsModesRoutes
-          ],
+        destination: `${
+          emailActionsModesRoutes[query.mode as keyof typeof emailActionsModesRoutes]
+        }?${queryURLParams}`,
       },
     }
   }
@@ -30,7 +27,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     redirect: {
       permanent: false,
-      destination: `${PRODUCT_FEED_ROUTE}?${queryURLParams}`,
+      destination: `${PRODUCT_FEED_ROUTE}?`,
     },
   }
 }
