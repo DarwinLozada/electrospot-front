@@ -103,6 +103,8 @@
 
     "auth": {
       "notVerifiedEmail": "The email of this account is not verified, please check the inbox"
-    }
+    },
+
+    "default": "An error has ocurred"
   }
 }
