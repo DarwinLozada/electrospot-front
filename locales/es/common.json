@@ -98,8 +98,11 @@
       "FirebaseError(auth/user-not-found)": "No pudimos enviar el correo. Por favor intenta de nuevo",
       "default": "Ha ocurrido un error"
     },
+
     "auth": {
       "notVerifiedEmail": "El email de esta cuenta no está verificado, por favor revisa la bandeja de entrada"
-    }
+    },
+
+    "default": "Ha ocurrido un error"
   }
 }

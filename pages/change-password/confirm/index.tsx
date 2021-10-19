@@ -1,14 +1,35 @@
-import { Form, Input } from 'antd'
+import { Form, Input, message } from 'antd'
+import { changePassword } from 'firebase_services/auth'
+import useAsyncAction from 'hooks/useAsyncAction'
 import AuthLayout from 'layouts/AuthLayout'
 import { NextPage } from 'next'
 import useTranslation from 'next-translate/useTranslation'
+import { useRouter } from 'next/router'
 import { ConfirmChangePasswordForm } from 'types/forms'
 
 const ConfirmChangePasswordPage: NextPage = () => {
   const { t } = useTranslation('common')
 
+  const router = useRouter()
+
+  const obbCode = router.query.obbCode
+
+  const { callAsync, isLoading } = useAsyncAction<void>({
+    onComplete: () => {
+      console.log('got em')
+    },
+    onError: (err) => {
+      message.error(t('auth.errors.default'))
+      console.error(err)
+    },
+  })
+
   const onSubmit = ({ password }: ConfirmChangePasswordForm) => {
-    console.log(password)
+    if (obbCode) {
+      callAsync(() => changePassword(obbCode as string, password))
+    } else {
+      message.error(t('auth.errors.default'))
+    }
   }
 
   return (
@@ -16,6 +37,7 @@ const ConfirmChangePasswordPage: NextPage = () => {
       title={t('auth.confirmChangePassword.title')}
       formName="confirm-change-password-form"
       onSubmit={onSubmit}
+      isLoading={isLoading}
       submitText={t('auth.confirmChangePassword.submit')}
     >
       <Form.Item

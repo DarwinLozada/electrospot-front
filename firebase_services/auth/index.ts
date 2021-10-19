@@ -1,4 +1,6 @@
 import {
+  applyActionCode,
+  confirmPasswordReset,
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged as firebaseAuthStateChanged,
@@ -96,6 +98,23 @@ export const getCurrentUser = (): User | null => {
 
   return user
 }
+
+/**
+ * Applies a verification code sent to the user by email or other out-of-band mechanism.
+ *
+ * @param obbCode A verification code sent to the user.
+ */
+export const applyFirebaseActionCode = (obbCode: string) =>
+  applyActionCode(auth, obbCode)
+
+/**
+ * Change an user's password using an obbCode.
+ *
+ * @param obbCode  A verification code sent to the user.
+ * @param newPassword The user's new password
+ */
+export const changePassword = (obbCode: string, newPassword: string) =>
+  confirmPasswordReset(auth, obbCode, newPassword)
 
 /**
  * Add a callback to execute when the state of the current user changes
