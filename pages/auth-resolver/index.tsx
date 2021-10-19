@@ -7,19 +7,17 @@ const AuthResolverPage: NextPage = () => {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { params } = context
+  const { query } = context
 
-  if (
-    params &&
-    typeof params.mode === 'string' &&
-    params.mode in emailActionsModes
-  ) {
+  console.log(query)
+
+  if (query && typeof query.mode === 'string' && query.mode in emailActionsModes) {
     return {
       redirect: {
         permanent: false,
         destination:
           emailActionsModesRoutes[
-            params.mode as keyof typeof emailActionsModesRoutes
+            query.mode as keyof typeof emailActionsModesRoutes
           ],
       },
     }
