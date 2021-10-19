@@ -64,11 +64,11 @@ const RegisterPage: NextPage = () => {
         rules={[
           {
             required: true,
-            message: t('auth.register.fields.confirmPassword.errors.required'),
+            message: t('auth.register.fields.password.errors.required'),
           },
           {
             min: 6,
-            message: t('auth.register.fields.confirmPassword.errors.min'),
+            message: t('auth.register.fields.password.errors.min'),
           },
         ]}
       >
