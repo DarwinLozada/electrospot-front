@@ -38,8 +38,8 @@ const LoginPage: NextPage = () => {
   })
 
   useEffect(() => {
-    if (router.query.mode) {
-      applyFirebaseActionCode(router.query.mode as string)
+    if (router.query.oobCode) {
+      applyFirebaseActionCode(router.query.oobCode as string)
     }
   }, [router])
 
