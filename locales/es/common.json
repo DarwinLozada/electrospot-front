@@ -20,7 +20,7 @@
           "label": "Contraseña",
           "errors": {
             "required": "Por favor ingresa tu contraseña",
-            "min": "La contraseña debe tener al menos 6b carácteres"
+            "min": "La contraseña debe tener al menos 6 carácteres"
           }
         },
         "confirmPassword": {
