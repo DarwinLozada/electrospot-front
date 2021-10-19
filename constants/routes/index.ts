@@ -5,5 +5,5 @@ export const LOGIN_ROUTE = '/login'
 export const emailActionsModesRoutes = {
   resetPassword: '/change-password/confirm',
   recoverEmail: '/',
-  verifyEmail: '/register/confirm',
+  verifyEmail: '/login',
 }

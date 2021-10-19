@@ -11,6 +11,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   console.log(query)
 
+  const queryURLParams = new URLSearchParams(
+    query as Record<string, string>
+  ).toString()
+
   if (query && typeof query.mode === 'string' && query.mode in emailActionsModes) {
     return {
       redirect: {
@@ -26,7 +30,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     redirect: {
       permanent: false,
-      destination: PRODUCT_FEED_ROUTE,
+      destination: `${PRODUCT_FEED_ROUTE}?${queryURLParams}`,
     },
   }
 }
