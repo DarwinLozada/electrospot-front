@@ -1,18 +1,25 @@
 import { Form, Input, message, Typography } from 'antd'
+import { CHANGE_PASSWORD_VERIFY } from 'constants/routes'
 import { sendChangePasswordEmail } from 'firebase_services/auth'
 import useAsyncAction from 'hooks/useAsyncAction'
 import AuthLayout from 'layouts/AuthLayout'
 import { NextPage } from 'next'
 import useTranslation from 'next-translate/useTranslation'
+import { useRouter } from 'next/router'
 import { SendChangePasswordEmailForm } from 'types/forms'
 import { createErrorMessage } from 'utils/errors'
 
 const SendChangePasswordEmail: NextPage = () => {
   const { t } = useTranslation('common')
 
+  const router = useRouter()
+
   const { callAsync, isLoading } = useAsyncAction<void>({
     onError: (err) => {
       message.error(createErrorMessage(t, err))
+    },
+    onComplete: () => {
+      router.push(CHANGE_PASSWORD_VERIFY)
     },
   })
 
