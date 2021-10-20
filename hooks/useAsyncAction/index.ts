@@ -3,13 +3,18 @@ import { useState } from 'react'
 /*
   Types: 
     <T>: The return type of the async function
-    <P>: Async function params interface
+    <P>: Interface for onComplete callback params
 */
 
-export interface UseAsyncActionOptions<T> {
-  onComplete?: (data: T) => any
+export interface UseAsyncActionOptions<T, P = {}> {
+  onComplete?: (data: T, asyncFuncOptions: P) => any
   onError?: (error: Error) => any
 }
+
+export type CallAsync<T, P> = (
+  asyncFunc: () => Promise<T>,
+  onCompleteParams: P
+) => void
 
 /**
  * Hook that allows doing async calls in any moment and provides
@@ -20,7 +25,7 @@ export interface UseAsyncActionOptions<T> {
  * - The `data` returned by the callback.
  *  - The `isLoading` and `error` state describers.
  */
-export default function useAsyncAction<T, P = any>(
+export default function useAsyncAction<T, P = {}>(
   options?: UseAsyncActionOptions<T>
 ) {
   const onComplete = options?.onComplete
@@ -30,7 +35,7 @@ export default function useAsyncAction<T, P = any>(
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [error, setError] = useState<null | Error>(null)
 
-  const callAsync = (asyncFunc: (...args: P[]) => Promise<T>) => {
+  const callAsync: CallAsync<T, P> = (asyncFunc, onCompleteParams) => {
     setIsLoading(true)
 
     asyncFunc()
@@ -39,7 +44,7 @@ export default function useAsyncAction<T, P = any>(
         setIsLoading(false)
 
         if (onComplete) {
-          onComplete(data)
+          onComplete(data, onCompleteParams)
         }
       })
       .catch((error: Error) => {

@@ -14,7 +14,12 @@ const SendChangePasswordEmail: NextPage = () => {
 
   const router = useRouter()
 
-  const { callAsync, isLoading } = useAsyncAction<void>({
+  const { callAsync, isLoading } = useAsyncAction<
+    void,
+    {
+      email: string
+    }
+  >({
     onError: (err) => {
       message.error(createErrorMessage(t, err))
     },
@@ -24,7 +29,9 @@ const SendChangePasswordEmail: NextPage = () => {
   })
 
   const onSubmit = ({ email }: SendChangePasswordEmailForm) => {
-    callAsync(() => sendChangePasswordEmail(email))
+    callAsync(() => sendChangePasswordEmail(email), {
+      email,
+    })
   }
 
   return (
