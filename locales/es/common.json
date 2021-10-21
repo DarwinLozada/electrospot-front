@@ -55,6 +55,10 @@
       "submit": "Aceptar"
     },
 
+    "confirmAccount": {
+      "title": "Confirma tu cuenta"
+    },
+
     "confirmChangePassword": {
       "title": "Cambiar contraseña",
       "fields": {

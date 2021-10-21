@@ -14,7 +14,7 @@ const VerifyEmailPage: NextPage = () => {
   }
 
   return (
-    <AuthLayout title="Confirm your account">
+    <AuthLayout title={t('auth.confirmChangePassword.title')}>
       <Typography.Paragraph className="text-center">
         {`${t('messages.verification.weHaveSentAMail')} `}
         <Typography.Text className="text-brandColor600 font-medium">

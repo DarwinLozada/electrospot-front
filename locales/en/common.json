@@ -55,6 +55,10 @@
       "submit": "Submit"
     },
 
+    "confirmAccount": {
+      "title": "Confirm your account"
+    },
+
     "confirmChangePassword": {
       "title": "Change password",
       "fields": {
