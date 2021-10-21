@@ -119,7 +119,7 @@
     },
 
     "auth": {
-      "notVerifiedEmail": "The email of this account is not verified, please check the inbox"
+      "notVerifiedEmail": "The email of this account is not verified, please check your inbox"
     },
 
     "default": "An error has ocurred"
