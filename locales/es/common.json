@@ -106,6 +106,10 @@
     }
   },
 
+  "CTA": {
+    "goToLogin": "Iniciar sesión"
+  },
+
   "errors": {
     "firebaseErrors": {
       "FirebaseError(auth/email-already-in-use)": "Este email ya se encuentra en uso",
