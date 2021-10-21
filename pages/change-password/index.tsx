@@ -23,8 +23,8 @@ const SendChangePasswordEmail: NextPage = () => {
     onError: (err) => {
       message.error(createErrorMessage(t, err))
     },
-    onComplete: () => {
-      router.push(CHANGE_PASSWORD_VERIFY)
+    onComplete: (_, { email }) => {
+      router.push({ pathname: CHANGE_PASSWORD_VERIFY, query: email })
     },
   })
 

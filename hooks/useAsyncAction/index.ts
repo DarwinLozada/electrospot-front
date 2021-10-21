@@ -6,14 +6,14 @@ import { useState } from 'react'
     <P>: Interface for onComplete callback params
 */
 
-export interface UseAsyncActionOptions<T, P = {}> {
-  onComplete?: (data: T, asyncFuncOptions: P) => any
+export interface UseAsyncActionOptions<T, P> {
+  onComplete?: (data: T, onCompleteParams: P) => any
   onError?: (error: Error) => any
 }
 
 export type CallAsync<T, P> = (
   asyncFunc: () => Promise<T>,
-  onCompleteParams: P
+  onCompleteParams?: P
 ) => void
 
 /**
@@ -26,7 +26,7 @@ export type CallAsync<T, P> = (
  *  - The `isLoading` and `error` state describers.
  */
 export default function useAsyncAction<T, P = {}>(
-  options?: UseAsyncActionOptions<T>
+  options?: UseAsyncActionOptions<T, P>
 ) {
   const onComplete = options?.onComplete
   const onError = options?.onError
@@ -44,7 +44,7 @@ export default function useAsyncAction<T, P = {}>(
         setIsLoading(false)
 
         if (onComplete) {
-          onComplete(data, onCompleteParams)
+          onComplete(data, onCompleteParams as P)
         }
       })
       .catch((error: Error) => {

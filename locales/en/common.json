@@ -97,6 +97,20 @@
     }
   },
 
+  "messages": {
+    "verification": {
+      "weHaveSentAMail": "We have sent a mail to",
+      "views": {
+        "confirmAccount": ", please check it out so you can confirm your account",
+        "changePassword": ", please check it out so you can change your password"
+      }
+    }
+  },
+
+  "CTA": {
+    "goToLogin": "Go to login"
+  },
+
   "errors": {
     "firebaseErrors": {
       "FirebaseError(auth/email-already-in-use)": "This email is alredy in use",

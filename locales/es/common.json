@@ -95,6 +95,17 @@
       "submit": "Aceptar"
     }
   },
+
+  "messages": {
+    "verification": {
+      "weHaveSentAMail": "Hemos enviado un correo a",
+      "views": {
+        "confirmAccount": ", por favor revisalo para que puedas confirmar tu cuenta",
+        "changePassword": ", por favor revisalo para que puedas cambiar tu contraseña"
+      }
+    }
+  },
+
   "errors": {
     "firebaseErrors": {
       "FirebaseError(auth/email-already-in-use)": "Este email ya se encuentra en uso",
