@@ -7,6 +7,7 @@ import { NextPage } from 'next'
 import useTranslation from 'next-translate/useTranslation'
 import { useRouter } from 'next/router'
 import { ConfirmChangePasswordForm } from 'types/forms'
+import { createErrorMessage } from 'utils/errors'
 
 const ConfirmChangePasswordPage: NextPage = () => {
   const { t } = useTranslation('common')
@@ -20,7 +21,7 @@ const ConfirmChangePasswordPage: NextPage = () => {
       message.success(t('auth.confirmChangePassword.messages.successful'))
     },
     onError: (err) => {
-      message.error(t('errors.default'))
+      message.error(createErrorMessage(t, err))
       console.error(err)
     },
   })

@@ -119,6 +119,7 @@
     "firebaseErrors": {
       "FirebaseError(auth/email-already-in-use)": "This email is alredy in use",
       "FirebaseError(auth/user-not-found)": "We could not send the email. Please try again",
+      "FirebaseError(auth/expired-action-code)": "Oops! the action time has expired. Please, request the email again",
       "default": "An error has ocurred"
     },
 

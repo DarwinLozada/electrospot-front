@@ -25,6 +25,7 @@ const RegisterPage: NextPage = () => {
 
     onError: (err) => {
       message.error(createErrorMessage(t, err))
+      console.error(err)
     },
   })
 
