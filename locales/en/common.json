@@ -32,6 +32,8 @@
         }
       },
 
+      "alredyHaveAccount": "Alreday have an account?",
+
       "submit": "Submit"
     },
     "login": {
@@ -51,6 +53,10 @@
           }
         }
       },
+
+      "haveAnAccount": "Don't have an account?",
+
+      "forgotPassword": "Forgot password?",
 
       "submit": "Submit"
     },

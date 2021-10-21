@@ -1,6 +1,10 @@
 import { UserCredential } from '@firebase/auth'
 import { Form, Input, message } from 'antd'
-import { PRODUCT_FEED_ROUTE } from 'constants/routes'
+import {
+  CHANGE_PASSWORD,
+  PRODUCT_FEED_ROUTE,
+  REGISTER_ROUTE,
+} from 'constants/routes'
 import { applyFirebaseActionCode, signInWithEmail } from 'firebase_services/auth'
 import { notVerifiedEmail } from 'firebase_services/constants/errorMessages'
 import { firebaseOobCode } from 'firebase_services/constants/firebaseVars'
@@ -8,6 +12,7 @@ import useAsyncAction from 'hooks/useAsyncAction'
 import AuthLayout from 'layouts/AuthLayout'
 import { NextPage } from 'next'
 import useTranslation from 'next-translate/useTranslation'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import authStore from 'stores/authStore/auth.store'
@@ -55,6 +60,13 @@ const LoginPage: NextPage = () => {
       onSubmit={onSubmit}
       isLoading={isLoading}
       submitText={t('auth.login.submit')}
+      afterSubmit={
+        <Form.Item>
+          <Link href={REGISTER_ROUTE}>
+            <a>{t('auth.login.haveAnAccount')}</a>
+          </Link>
+        </Form.Item>
+      }
     >
       <Form.Item
         label={t('auth.login.fields.email.label')}
@@ -77,6 +89,9 @@ const LoginPage: NextPage = () => {
         ]}
       >
         <Input.Password />
+        <Link href={CHANGE_PASSWORD}>
+          <a>{t('auth.login.forgotPassword')}</a>
+        </Link>
       </Form.Item>
     </AuthLayout>
   )

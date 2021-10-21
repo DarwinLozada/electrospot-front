@@ -1,11 +1,12 @@
 import { UserCredential } from '@firebase/auth'
 import { Form, Input, message } from 'antd'
-import { CONFIRM_ACCOUNT_ROUTE } from 'constants/routes'
+import { CONFIRM_ACCOUNT_ROUTE, LOGIN_ROUTE } from 'constants/routes'
 import { signUpWithEmail } from 'firebase_services/auth'
 import useAsyncAction from 'hooks/useAsyncAction'
 import AuthLayout from 'layouts/AuthLayout'
 import { NextPage } from 'next'
 import useTranslation from 'next-translate/useTranslation'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { RegisterForm } from 'types/forms'
 import { createErrorMessage } from 'utils/errors'
@@ -40,6 +41,11 @@ const RegisterPage: NextPage = () => {
       onSubmit={onSubmit}
       submitText={t('auth.register.submit')}
       isLoading={isLoading}
+      afterSubmit={
+        <Link href={LOGIN_ROUTE}>
+          <a>{t('auth.register.alredyHaveAccount')}</a>
+        </Link>
+      }
     >
       <Form.Item
         label={t('auth.register.fields.name.label')}
