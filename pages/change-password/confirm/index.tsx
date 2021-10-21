@@ -1,4 +1,5 @@
 import { Form, Input, message } from 'antd'
+import { LOGIN_ROUTE } from 'constants/routes'
 import { changePassword } from 'firebase_services/auth'
 import { firebaseOobCode } from 'firebase_services/constants/firebaseVars'
 import useAsyncAction from 'hooks/useAsyncAction'
@@ -19,6 +20,7 @@ const ConfirmChangePasswordPage: NextPage = () => {
   const { callAsync, isLoading } = useAsyncAction<void>({
     onComplete: () => {
       message.success(t('auth.confirmChangePassword.messages.successful'))
+      router.push(LOGIN_ROUTE)
     },
     onError: (err) => {
       message.error(createErrorMessage(t, err))
