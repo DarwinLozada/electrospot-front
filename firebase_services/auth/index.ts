@@ -102,19 +102,19 @@ export const getCurrentUser = (): User | null => {
 /**
  * Applies a verification code sent to the user by email or other out-of-band mechanism.
  *
- * @param obbCode A verification code sent to the user.
+ * @param oobCode A verification code sent to the user.
  */
-export const applyFirebaseActionCode = (obbCode: string) =>
-  applyActionCode(auth, obbCode)
+export const applyFirebaseActionCode = (oobCode: string) =>
+  applyActionCode(auth, oobCode)
 
 /**
- * Change an user's password using an obbCode.
+ * Change an user's password using an oobCode.
  *
- * @param obbCode  A verification code sent to the user.
+ * @param oobCode  A verification code sent to the user.
  * @param newPassword The user's new password
  */
-export const changePassword = (obbCode: string, newPassword: string) =>
-  confirmPasswordReset(auth, obbCode, newPassword)
+export const changePassword = (oobCode: string, newPassword: string) =>
+  confirmPasswordReset(auth, oobCode, newPassword)
 
 /**
  * Add a callback to execute when the state of the current user changes

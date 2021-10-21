@@ -3,6 +3,7 @@ import { Form, Input, message } from 'antd'
 import { PRODUCT_FEED_ROUTE } from 'constants/routes'
 import { applyFirebaseActionCode, signInWithEmail } from 'firebase_services/auth'
 import { notVerifiedEmail } from 'firebase_services/constants/errorMessages'
+import { firebaseOobCode } from 'firebase_services/constants/firebaseVars'
 import useAsyncAction from 'hooks/useAsyncAction'
 import AuthLayout from 'layouts/AuthLayout'
 import { NextPage } from 'next'
@@ -38,8 +39,8 @@ const LoginPage: NextPage = () => {
   })
 
   useEffect(() => {
-    if (router.query.oobCode) {
-      applyFirebaseActionCode(router.query.oobCode as string)
+    if (router.query[firebaseOobCode]) {
+      applyFirebaseActionCode(router.query[firebaseOobCode] as string)
     }
   }, [router])
 

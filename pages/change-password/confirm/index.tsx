@@ -1,5 +1,6 @@
 import { Form, Input, message } from 'antd'
 import { changePassword } from 'firebase_services/auth'
+import { firebaseOobCode } from 'firebase_services/constants/firebaseVars'
 import useAsyncAction from 'hooks/useAsyncAction'
 import AuthLayout from 'layouts/AuthLayout'
 import { NextPage } from 'next'
@@ -12,23 +13,23 @@ const ConfirmChangePasswordPage: NextPage = () => {
 
   const router = useRouter()
 
-  const obbCode = router.query.obbCode
+  const oobCode = router.query[firebaseOobCode]
 
   const { callAsync, isLoading } = useAsyncAction<void>({
     onComplete: () => {
       message.success(t('auth.confirmChangePassword.messages.successful'))
     },
     onError: (err) => {
-      message.error(t('auth.errors.default'))
+      message.error(t('errors.default'))
       console.error(err)
     },
   })
 
   const onSubmit = ({ password }: ConfirmChangePasswordForm) => {
-    if (obbCode) {
-      callAsync(() => changePassword(obbCode as string, password))
+    if (oobCode) {
+      callAsync(() => changePassword(oobCode as string, password))
     } else {
-      message.error(t('auth.errors.default'))
+      message.error(t('errors.default'))
     }
   }
 
