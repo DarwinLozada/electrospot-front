@@ -42,7 +42,7 @@ const SendChangePasswordEmail: NextPage = () => {
       isLoading={isLoading}
       formLayout={{
         wrapperCol: {
-          span: 18,
+          span: 24,
         },
         labelCol: {
           span: 6,

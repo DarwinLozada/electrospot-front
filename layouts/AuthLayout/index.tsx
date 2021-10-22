@@ -30,48 +30,50 @@ const AuthLayout: FC<Props> = ({
   const isMobile = useBreakpoint().xs
 
   return (
-    <main className="flex flex-col items-center xs:bg-gradient-to-b from-brandWhite to-brandColor100 justify-center max-w-screen h-screen max-h-screen overflow-hidden">
-      <div className="xs:shadow-md bg-brandWhite max-w-md py-6 px-8 flex flex-col items-center justify-center">
-        <div className="w-36 mb-6">
-          <Link href={PRODUCT_FEED_ROUTE}>
-            <a>
-              <Image src={electrospotLogo} alt="electrospot_logo" />
-            </a>
-          </Link>
-        </div>
-        <div className="mb-4">
-          <Typography.Title className="text-center" level={isMobile ? 2 : 3}>
-            {title}
-          </Typography.Title>
-        </div>
+    <>
+      <main className="auth-layout flex flex-col items-center xs:bg-gradient-to-b from-brandWhite to-brandColor100 justify-center max-w-screen h-screen max-h-screen overflow-hidden">
+        <div className="xs:shadow-md bg-brandWhite w-1/3 max-w-lg py-6 px-16 flex flex-col items-center justify-center">
+          <div className="w-36 mb-6">
+            <Link href={PRODUCT_FEED_ROUTE}>
+              <a>
+                <Image src={electrospotLogo} alt="electrospot_logo" />
+              </a>
+            </Link>
+          </div>
+          <div className="mb-4">
+            <Typography.Title className="text-center" level={isMobile ? 2 : 3}>
+              {title}
+            </Typography.Title>
+          </div>
 
-        {onSubmit ? (
-          <Form
-            labelCol={{ span: 8 }}
-            wrapperCol={{ span: 16 }}
-            name={formName}
-            onFinish={onSubmit}
-            {...formLayout}
-          >
-            {children}
-            <Form.Item wrapperCol={{ offset: isMobile ? 0 : 8, span: 16 }}>
-              <Button
-                type="primary"
-                htmlType="submit"
-                className="w-full"
-                loading={isLoading}
-                block={!!isMobile}
-              >
-                {submitText}
-              </Button>
-              {afterSubmit}
-            </Form.Item>
-          </Form>
-        ) : (
-          children
-        )}
-      </div>
-    </main>
+          {onSubmit ? (
+            <Form
+              name={formName}
+              layout="vertical"
+              onFinish={onSubmit}
+              className="auth-layout__form-wrapper w-full"
+              {...formLayout}
+            >
+              {children}
+              <Form.Item wrapperCol={{ offset: 0, span: 24 }}>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  className="w-full"
+                  loading={isLoading}
+                  block={!!isMobile}
+                >
+                  {submitText}
+                </Button>
+                {afterSubmit}
+              </Form.Item>
+            </Form>
+          ) : (
+            children
+          )}
+        </div>
+      </main>
+    </>
   )
 }
 
